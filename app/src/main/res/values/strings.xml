@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">BookManager-Kotlin</string>
+    <string name="app_login">ログイン</string>
+    <string name="app_signup">アカウント新規登録</string>
+    <string name="app_logout">ログアウト</string>
+    <string name="app_book_list">書籍一覧</string>
+    <string name="app_add_book">書籍追加</string>
+    <string name="app_edit_book">書籍情報編集</string>
+
+    <string name="tv_email">メールアドレス</string>
+    <string name="tv_password">パスワード</string>
+    <string name="tv_password_confirm">パスワード確認</string>
+    <string name="tv_book_name">書籍名</string>
+    <string name="tv_book_price">値段</string>
+    <string name="tv_yen">円</string>
+    <string name="tv_purchase_date">購入日</string>
+
+    <string name="bt_login">ログイン</string>
+    <string name="bt_signup">アカウント新規登録</string>
+    <string name="bt_logout">ログアウト</string>
+    <string name="bt_save">保存</string>
+    <string name="bt_add">追加</string>
+    <string name="bt_add_image">画像添付</string>
+
+    <string name="navbar_book_list">書籍一覧</string>
+    <string name="navbar_setting">設定</string>
+
+    <string name="view_ok">OK</string>
+    <string name="view_cancel">キャンセル</string>
+
+    <string name="dialog_title">確認</string>
+    <string name="dialog_login">ログインしました</string>
+    <string name="dialog_logout">ログアウトしました</string>
+    <string name="dialog_signup">新規アカウントを登録しました</string>
+    <string name="dialog_add_book">書籍情報を追加登録しました</string>
+    <string name="dialog_edit_book">書籍情報を編集しました</string>
+
+    <string name="dialog_msg_logout">ログアウトしてもよろしいですか？</string>
+
+    <string name="error_email">メールアドレスの入力値が有効ではありません</string>
+    <string name="error_password">パスワードが有効ではありません</string>
+    <string name="error_equal_password">パスワードが一致していません</string>
+    <string name="error_empty_book_data">書籍情報に未入力の項目があります</string>
+
+    <string name="error_login">ログインに失敗しました</string>
+    <string name="error_signup">新規アカウント登録に失敗しました</string>
+    <string name="error_logout">ログアウトに失敗しました</string>
+    <string name="error_add_book">書籍情報追加に失敗しました</string>
+    <string name="error_edit_book">書籍情報編集に失敗しました</string>
+    <string name="error_book_list">書籍一覧情報の取得に失敗しました</string>
+
+    <string name="failure_net_work">ネットワーク接続エラー</string>
+
+    <string name="log_error_get_image">ローカルストレージから画像を取得することができませんでした</string>
 </resources>
