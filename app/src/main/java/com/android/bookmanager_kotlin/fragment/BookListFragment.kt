@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.bookmanager_kotlin.R
+import kotlinx.android.synthetic.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,17 +35,45 @@ class BookListFragment : Fragment() {
 //    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Fragmentとlayoutを紐付ける
-        super.onCreateView(inflater, container, savedInstanceState)
-
-        // アクションバーにタイトル表示
+        // 必要？super.onCreateView(inflater, container, savedInstanceState)
+        val view = inflater.inflate(R.layout.fragment_book_list, container, false)
         activity?.setTitle(R.string.app_book_list)
 
-        return inflater.inflate(R.layout.fragment_book_list, container, false)
+        val bookListRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        val linearLayoutManager = LinearLayoutManager(view.context)
+        val bookList = createDummyBookList()
+        val adapter = BookListRecyclerViewAdapter(bookList)
+
+        bookListRecyclerView.layoutManager = linearLayoutManager
+        bookListRecyclerView.adapter = adapter
+        bookListRecyclerView.addItemDecoration(DividerItemDecoration(view.context, linearLayoutManager.orientation))
+
+        // アクションバーのボタンを使えるようにする処理
+        setHasOptionsMenu(true)
+
+        return view
     }
+
+    // TODO: ダミーデータのためAPIよりデータ取得をする際は削除
+    private fun createDummyBookList(): MutableList<MutableMap<String, String>> {
+        val bookList: MutableList<MutableMap<String, String>> = mutableListOf()
+        // TODO: モデルBookクラスを作ってその型で作りたい
+        var bookInfo = mutableMapOf("bookName" to "Kotlin入門", "bookPrice" to "3000", "bookPurchaseDate" to "2020/11/6")
+
+        // 20件のダミーデータを登録
+        var i = 0
+        while (i < 20) {
+            i++
+            bookList.add(bookInfo)
+        }
+        return bookList
+    }
+
+
+
+
 
 //    companion object {
 //        /**
