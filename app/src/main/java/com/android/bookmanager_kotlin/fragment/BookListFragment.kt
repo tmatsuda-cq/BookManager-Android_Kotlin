@@ -29,6 +29,21 @@ class BookListFragment : Fragment() {
         bookListRecyclerView.adapter = adapter
         bookListRecyclerView.addItemDecoration(DividerItemDecoration(view.context, linearLayoutManager.orientation))
 
+        // Item要素クリックイベント
+        adapter.setOnItemClickListener(
+            object : BookListRecyclerViewAdapter.OnItemClickListener {
+                override fun onItemClick(book: Book) {
+                    // TODO: !! を修正
+                    // 編集画面遷移処理
+                    fragmentManager!!
+                        .beginTransaction()
+                        .replace(R.id.fl_activity_book_list, EditBookFragment())
+                        .addToBackStack(null)
+                        .commit()
+                }
+            }
+        )
+
         // アクションバーのボタンを使えるようにする処理
         setHasOptionsMenu(true)
 
