@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,9 +35,16 @@ class BookListFragment : Fragment() {
         adapter.setOnItemClickListener(
             object : BookListRecyclerViewAdapter.OnItemClickListener {
                 override fun onItemClick(book: Book) {
-                    // TODO: !! を修正
-                    // 編集画面遷移処理
-                    fragmentManager!!
+                    // TODO: 画像データも渡せるようにする
+
+                    // データを渡す処理
+                    setFragmentResult("bookData", bundleOf(
+                        "bookName" to book.bookName,
+                        "bookPrice" to book.bookPrice,
+                        "bookPurchaseDate" to book.date
+                    ))
+                    // TODO: 画面遷移処共通化したい
+                    parentFragmentManager
                         .beginTransaction()
                         .replace(R.id.fl_activity_book_list, EditBookFragment())
                         .addToBackStack(null)
