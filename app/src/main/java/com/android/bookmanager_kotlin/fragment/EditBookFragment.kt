@@ -18,7 +18,7 @@ class EditBookFragment : Fragment() {
         activity?.setTitle(R.string.app_edit_book)
         // TODO: 戻るボタンを実装
 
-        // 書籍一覧から私れたデータをviewに表示する
+        // 書籍一覧から渡されたデータをviewに表示する
         setFragmentResultListener("bookData") { _, bundle ->
             et_edit_book_name.setText(bundle.getString("bookName"))
             et_edit_book_price.setText(bundle.getInt("bookPrice").toString())

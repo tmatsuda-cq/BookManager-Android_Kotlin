@@ -1,18 +1,18 @@
 package com.android.bookmanager_kotlin.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.R.id.bt_add
+import com.android.bookmanager_kotlin.activity.AddBookActivity
 import com.android.bookmanager_kotlin.model.Book
-import kotlinx.android.synthetic.*
 
 class BookListFragment : Fragment() {
 
@@ -72,5 +72,22 @@ class BookListFragment : Fragment() {
             bookList.add(book)
         }
         return bookList
+    }
+
+    // アクションバーに追加ボタンを表示
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_add, menu)
+    }
+
+    // アクションバー追加ボタン押した時の処理
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == bt_add) {
+            activity?.startActivity(Intent(context, AddBookActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
