@@ -3,6 +3,7 @@ package com.android.bookmanager_kotlin.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_add
 import com.android.bookmanager_kotlin.activity.AddBookActivity
+import com.android.bookmanager_kotlin.activity.BookListActivity
 import com.android.bookmanager_kotlin.model.Book
 
 class BookListFragment : Fragment() {
@@ -21,7 +23,6 @@ class BookListFragment : Fragment() {
         // Fragmentとlayoutを紐付ける
         // 必要？super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_book_list, container, false)
-        activity?.setTitle(R.string.app_book_list)
 
         val bookListRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         val linearLayoutManager = LinearLayoutManager(view.context)
@@ -52,6 +53,11 @@ class BookListFragment : Fragment() {
                 }
             }
         )
+
+        (activity as? AppCompatActivity)?.supportActionBar?.let {
+            it.setTitle(R.string.app_book_list)
+            it.setDisplayHomeAsUpEnabled(false)
+        }
 
         // アクションバーのボタンを使えるようにする処理
         setHasOptionsMenu(true)

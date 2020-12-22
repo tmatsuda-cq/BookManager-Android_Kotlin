@@ -1,14 +1,12 @@
 package com.android.bookmanager_kotlin.activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.fragment.BookListFragment
 import com.android.bookmanager_kotlin.fragment.LogoutFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_book_list.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 class BookListActivity : AppCompatActivity() {
 

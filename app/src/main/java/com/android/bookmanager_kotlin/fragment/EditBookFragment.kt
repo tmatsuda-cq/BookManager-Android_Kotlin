@@ -3,10 +3,13 @@ package com.android.bookmanager_kotlin.fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.activity.BookListActivity
 import com.android.bookmanager_kotlin.model.Book
 import kotlinx.android.synthetic.main.fragment_edit_book.*
 
@@ -15,8 +18,12 @@ class EditBookFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_edit_book, container, false)
-        activity?.setTitle(R.string.app_edit_book)
-        // TODO: 戻るボタンを実装
+
+        (activity as? AppCompatActivity)?.supportActionBar?.let {
+            it.setTitle(R.string.app_edit_book)
+            it.setDisplayHomeAsUpEnabled(true)
+        }
+        setHasOptionsMenu(true)
 
         // 書籍一覧から渡されたデータをviewに表示する
         setFragmentResultListener("bookData") { _, bundle ->
@@ -26,5 +33,17 @@ class EditBookFragment : Fragment() {
         }
 
         return view
+    }
+
+    // アクションバー戻るボタンクリックでフラグメント切り替え
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.fl_activity_book_list, BookListFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
