@@ -11,6 +11,7 @@ import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.activity.BookListActivity
 import com.android.bookmanager_kotlin.model.Book
+import com.android.bookmanager_kotlin.util.FragmentUtils
 import kotlinx.android.synthetic.main.fragment_edit_book.*
 
 class EditBookFragment : Fragment() {
@@ -38,11 +39,7 @@ class EditBookFragment : Fragment() {
     // アクションバー戻るボタンクリックでフラグメント切り替え
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            parentFragmentManager
-                .beginTransaction()
-                .replace(R.id.fl_activity_book_list, BookListFragment())
-                .addToBackStack(null)
-                .commit()
+            FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
         }
         return super.onOptionsItemSelected(item)
     }
