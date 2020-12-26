@@ -1,18 +1,20 @@
 package com.android.bookmanager_kotlin.fragment
 
+import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
-import com.android.bookmanager_kotlin.activity.BookListActivity
-import com.android.bookmanager_kotlin.model.Book
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import kotlinx.android.synthetic.main.fragment_edit_book.*
+import java.util.*
 
 class EditBookFragment : Fragment() {
 
@@ -36,11 +38,34 @@ class EditBookFragment : Fragment() {
         return view
     }
 
+    // onCreate() -> onCreateView() -> onActivityCreated() -> onStart() -> onResume()
+    override fun onStart() {
+        super.onStart()
+
+        // onCreateView()で呼ぶとnullポになる
+        et_edit_book_purchase_date.setOnClickListener {
+            showDatePicker(requireContext(), et_edit_book_purchase_date)
+        }
+    }
+
     // アクションバー戻るボタンクリックでフラグメント切り替え
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showDatePicker(context: Context, editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+
+        DatePickerDialog(
+            context, { _, y, m, d ->
+                editText.setText("$y/${m + 1}/$d")
+            }, year, month, dayOfMonth
+        ).show()
     }
 }
