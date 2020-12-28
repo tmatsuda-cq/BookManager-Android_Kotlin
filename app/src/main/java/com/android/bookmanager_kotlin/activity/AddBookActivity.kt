@@ -26,7 +26,7 @@ class AddBookActivity : AppCompatActivity() {
             //selectBookImage()
 
             // TODO: 非推奨のため削除
-            showImageStrage()
+            showImageStorage()
         }
 
         et_add_book_purchase_date.setOnClickListener {
@@ -54,7 +54,7 @@ class AddBookActivity : AppCompatActivity() {
         }
     }
 
-    private fun showImageStrage() {
+    private fun showImageStorage() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "image/*"
