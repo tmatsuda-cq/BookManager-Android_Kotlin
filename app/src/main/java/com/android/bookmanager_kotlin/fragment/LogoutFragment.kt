@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.activity.LoginActivity
-import kotlinx.android.synthetic.main.fragment_logout.*
 import kotlinx.android.synthetic.main.fragment_logout.view.*
 
 class LogoutFragment : Fragment() {
@@ -20,6 +19,10 @@ class LogoutFragment : Fragment() {
         activity?.setTitle(R.string.app_logout)
 
         // TODO: API実装時インターフェースでコールバックさせないとスレッドの違いからクラッシュするかも
+        // Builderの引数はrequireContextではなくてactivityで良いのか？？
+
+        val context = requireContext()
+
         view.bt_logout.setOnClickListener {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.dialog_title)
