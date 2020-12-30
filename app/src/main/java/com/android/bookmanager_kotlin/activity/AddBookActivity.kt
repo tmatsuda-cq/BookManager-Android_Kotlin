@@ -18,7 +18,6 @@ import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.activity_add_book.*
 import java.lang.Exception
-import java.util.regex.Pattern
 
 class AddBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

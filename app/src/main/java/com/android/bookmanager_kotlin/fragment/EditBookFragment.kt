@@ -1,6 +1,5 @@
 package com.android.bookmanager_kotlin.fragment
 
-import android.R.*
 import android.R.id.home
 import android.app.Activity
 import android.content.Intent
@@ -19,7 +18,6 @@ import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
-import kotlinx.android.synthetic.main.activity_add_book.*
 import kotlinx.android.synthetic.main.fragment_edit_book.*
 import java.lang.Exception
 import java.util.regex.Pattern
