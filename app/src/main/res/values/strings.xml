@@ -41,6 +41,7 @@
     <string name="error_password">パスワードが有効ではありません</string>
     <string name="error_equal_password">パスワードが一致していません</string>
     <string name="error_empty_book_data">書籍情報に未入力の項目があります</string>
+    <string name="error_book_price">値段は数字で入力してください</string>
 
     <string name="error_login">ログインに失敗しました</string>
     <string name="error_signup">新規アカウント登録に失敗しました</string>

@@ -1,24 +1,28 @@
 package com.android.bookmanager_kotlin.fragment
 
+import android.R.*
+import android.R.id.home
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
 import com.android.bookmanager_kotlin.util.FragmentUtils
+import com.android.bookmanager_kotlin.util.ValidationUtils
+import kotlinx.android.synthetic.main.activity_add_book.*
 import kotlinx.android.synthetic.main.fragment_edit_book.*
 import java.lang.Exception
+import java.util.regex.Pattern
 
 class EditBookFragment : Fragment() {
 
@@ -82,11 +86,40 @@ class EditBookFragment : Fragment() {
         launcher.launch(intent)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_save, menu)
+    }
+
     // アクションバー戻るボタンクリックでフラグメント切り替え
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+        when (item.itemId) {
+            home -> {
+                FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                return true
+            }
+            bt_save -> {
+                // TODO: API実装時に書籍データ更新処理挟む
+                val name = et_edit_book_name.text.toString()
+                val price = et_edit_book_price.text.toString()
+                val purchaseDate = et_edit_book_purchase_date.text.toString()
+
+                @StringRes
+                val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)
+
+                // バリデーションに引っかかっているかをnullかどうかで判断している
+                if (errorMessage == null) {
+                    FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                } else {
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+                }
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    // 数値かどうかをチェック
+    private fun isNumber(price: String) : Boolean {
+        return !Pattern.compile("^[0-9]+$").matcher(price).matches()
     }
 }

@@ -1,18 +1,24 @@
 package com.android.bookmanager_kotlin.activity
 
+import android.R.id.*
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
+import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.activity_add_book.*
 import java.lang.Exception
+import java.util.regex.Pattern
 
 class AddBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,15 +92,39 @@ class AddBookActivity : AppCompatActivity() {
         launcher.launch(intent)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_save, menu)
+        return true
+    }
 
     // アクションバー戻るボタンクリック処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (item.itemId == android.R.id.home) {
+        when (item.itemId) {
+            home -> {
                 finish()
-
                 return true
-         }
+            }
+            bt_save -> {
+                // TODO: API実装時に書籍データ登録処理実装
+                val name = et_add_book_name.text.toString()
+                val price = et_add_book_price.text.toString()
+                val purchaseDate = et_add_book_purchase_date.text.toString()
+
+                @StringRes
+                val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)
+
+                // バリデーションに引っかかっているかをnullかどうかで判断している
+                if (errorMessage == null) {
+                    finish()
+                } else {
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+                }
+                return true
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
