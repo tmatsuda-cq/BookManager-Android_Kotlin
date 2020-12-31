@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +16,7 @@ import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
+import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.activity_add_book.*
 import java.lang.Exception
@@ -125,5 +127,11 @@ class AddBookActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // 背景タップでキーボードを非表示
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val focusView = currentFocus ?: return false
+        KeyboardUtils.hideKeyboard(focusView)
 
+        return false
+    }
 }

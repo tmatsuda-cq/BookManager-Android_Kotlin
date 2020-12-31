@@ -1,11 +1,15 @@
 package com.android.bookmanager_kotlin.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -39,5 +43,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    // 背景タップでキーボードを非表示
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val focusView = currentFocus ?: return false
+        KeyboardUtils.hideKeyboard(focusView)
+
+        return false
     }
 }

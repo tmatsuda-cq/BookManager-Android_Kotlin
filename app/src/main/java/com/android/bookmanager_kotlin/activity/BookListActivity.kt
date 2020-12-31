@@ -1,11 +1,13 @@
 package com.android.bookmanager_kotlin.activity
 
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.fragment.BookListFragment
 import com.android.bookmanager_kotlin.fragment.LogoutFragment
 import com.android.bookmanager_kotlin.util.FragmentUtils
+import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_book_list.*
 
@@ -35,5 +37,13 @@ class BookListActivity : AppCompatActivity() {
             }
         }
         false
+    }
+
+    // 背景タップでキーボードを非表示
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val focusView = currentFocus ?: return false
+        KeyboardUtils.hideKeyboard(focusView)
+
+        return false
     }
 }
