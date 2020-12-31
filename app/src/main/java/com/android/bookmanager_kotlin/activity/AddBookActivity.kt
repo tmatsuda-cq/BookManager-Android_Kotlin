@@ -25,7 +25,7 @@ class AddBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
-
+        setTitle(R.string.app_add_book)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bt_add_book_image.setOnClickListener {
