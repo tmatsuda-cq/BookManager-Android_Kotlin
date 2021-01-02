@@ -13,7 +13,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"/>
+        android:layout_marginTop="@dimen/margin_small"
+        app:srcCompat="@drawable/ic_launcher" /> <!-- TODO: API実装時削除、ダミー画像データのため -->
 
     <Button
         android:id="@+id/bt_edit_book_image"

@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"/>
+        app:layout_constraintHorizontal_bias="0.1"
+        app:srcCompat="@drawable/ic_launcher"/> <!-- TODO: API実装時削除、ダミー画像データのため -->
 
     <TextView
         android:id="@+id/tv_book_name"
