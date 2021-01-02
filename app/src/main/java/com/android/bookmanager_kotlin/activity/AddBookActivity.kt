@@ -29,44 +29,12 @@ class AddBookActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bt_add_book_image.setOnClickListener {
-            // 推奨
-            //selectBookImage()
-
-            // TODO: 非推奨のため削除
-            showImageStorage()
+            selectBookImage()
         }
 
         et_add_book_purchase_date.setOnClickListener {
             showDatePicker(this, et_add_book_purchase_date)
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode != Activity.RESULT_OK) {
-            return
-        }
-
-        if (requestCode == 42) {
-            try {
-                data?.data?.also { uri ->
-                    val inputStream = contentResolver?.openInputStream(uri)
-                    val image = BitmapFactory.decodeStream(inputStream)
-                    iv_add_book_image.setImageBitmap(image)
-                }
-            } catch (e: Exception) {
-                Toast.makeText(this, "画像選択処理に失敗しました", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    private fun showImageStorage() {
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "image/*"
-        }
-        startActivityForResult(intent, 42)
     }
 
     private fun selectBookImage() {
@@ -75,6 +43,7 @@ class AddBookActivity : AppCompatActivity() {
             type = "image/*"
         }
 
+        // 現在非推奨: startActivityForResult()
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
             if (result?.resultCode == Activity.RESULT_OK) {
                 result.data?.let { data: Intent ->
@@ -100,7 +69,6 @@ class AddBookActivity : AppCompatActivity() {
 
     // アクションバー戻るボタンクリック処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             home -> {
                 finish()
