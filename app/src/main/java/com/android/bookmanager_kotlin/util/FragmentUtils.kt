@@ -4,8 +4,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-// TODO: 共通化処理 object 式で定義した方が良いのか？ / companion object で定義した方が良いのか確認
-class FragmentUtils {
+object FragmentUtils {
 
     fun showFragment(fragment: Fragment, fragmentManager: FragmentManager, @IdRes container: Int) {
         fragmentManager

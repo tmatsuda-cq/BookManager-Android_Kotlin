@@ -20,7 +20,6 @@ import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.fragment_edit_book.*
 import java.lang.Exception
-import java.util.regex.Pattern
 
 class EditBookFragment : Fragment() {
 
@@ -92,7 +91,7 @@ class EditBookFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             home -> {
-                FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
                 return true
             }
             bt_save -> {
@@ -106,7 +105,7 @@ class EditBookFragment : Fragment() {
 
                 // バリデーションに引っかかっているかをnullかどうかで判断している
                 if (errorMessage == null) {
-                    FragmentUtils().showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                    FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
                 } else {
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
                 }
@@ -114,10 +113,5 @@ class EditBookFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    // 数値かどうかをチェック
-    private fun isNumber(price: String) : Boolean {
-        return !Pattern.compile("^[0-9]+$").matcher(price).matches()
     }
 }

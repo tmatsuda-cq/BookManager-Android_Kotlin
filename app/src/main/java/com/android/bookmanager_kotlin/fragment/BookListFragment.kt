@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_add
 import com.android.bookmanager_kotlin.activity.AddBookActivity
-import com.android.bookmanager_kotlin.activity.BookListActivity
 import com.android.bookmanager_kotlin.model.Book
 import com.android.bookmanager_kotlin.util.FragmentUtils
 
@@ -45,7 +44,7 @@ class BookListFragment : Fragment() {
                         "bookPrice" to book.bookPrice,
                         "bookPurchaseDate" to book.date
                     ))
-                    FragmentUtils().showFragment(EditBookFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                    FragmentUtils.showFragment(EditBookFragment(), parentFragmentManager, R.id.fl_activity_book_list)
                 }
             }
         )

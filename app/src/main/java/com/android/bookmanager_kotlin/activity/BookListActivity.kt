@@ -21,18 +21,18 @@ class BookListActivity : AppCompatActivity() {
         bottom_navbar.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         // fragment表示処理を記述
-        FragmentUtils().showFragment(BookListFragment(), supportFragmentManager, R.id.fl_activity_book_list)
+        FragmentUtils.showFragment(BookListFragment(), supportFragmentManager, R.id.fl_activity_book_list)
     }
 
     // ナビゲーションクリックイベントを記述
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navbar_book_list -> {
-                FragmentUtils().showFragment(BookListFragment(), supportFragmentManager, R.id.fl_activity_book_list)
+                FragmentUtils.showFragment(BookListFragment(), supportFragmentManager, R.id.fl_activity_book_list)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navbar_setting -> {
-                FragmentUtils().showFragment(LogoutFragment(), supportFragmentManager, R.id.fl_activity_book_list)
+                FragmentUtils.showFragment(LogoutFragment(), supportFragmentManager, R.id.fl_activity_book_list)
                 return@OnNavigationItemSelectedListener true
             }
         }
