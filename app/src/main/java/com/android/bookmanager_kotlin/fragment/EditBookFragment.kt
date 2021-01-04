@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_save
-import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
+import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.fragment_edit_book.*
@@ -54,7 +54,7 @@ class EditBookFragment : Fragment() {
 
         // onCreateView()で呼ぶとnullポになる
         et_edit_book_purchase_date.setOnClickListener {
-            showDatePicker(requireContext(), et_edit_book_purchase_date)
+            DatePickerUtils.showDatePicker(requireContext(), et_edit_book_purchase_date)
         }
     }
 

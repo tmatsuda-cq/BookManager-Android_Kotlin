@@ -15,7 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_save
-import com.android.bookmanager_kotlin.util.DatePickerUtils.showDatePicker
+import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 import kotlinx.android.synthetic.main.activity_add_book.*
@@ -33,7 +33,7 @@ class AddBookActivity : AppCompatActivity() {
         }
 
         et_add_book_purchase_date.setOnClickListener {
-            showDatePicker(this, et_add_book_purchase_date)
+            DatePickerUtils.showDatePicker(this, et_add_book_purchase_date)
         }
     }
 
