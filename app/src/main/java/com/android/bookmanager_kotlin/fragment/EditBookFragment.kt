@@ -74,8 +74,7 @@ class EditBookFragment : Fragment() {
                             iv_edit_book_image.setImageBitmap(image)
                         }
                     } catch (e: Exception) {
-                        // TODO: Stringファイルにアクセスさせたい
-                        Toast.makeText(activity?.applicationContext, "画像選択処理に失敗しました", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
                     }
                 }
             }

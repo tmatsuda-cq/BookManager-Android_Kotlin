@@ -50,6 +50,7 @@
     <string name="error_add_book">書籍情報追加に失敗しました</string>
     <string name="error_edit_book">書籍情報編集に失敗しました</string>
     <string name="error_book_list">書籍一覧情報の取得に失敗しました</string>
+    <string name="error_insert_book_image">画像挿入処理に失敗しました</string>
 
     <string name="failure_net_work">ネットワーク接続エラー</string>
 

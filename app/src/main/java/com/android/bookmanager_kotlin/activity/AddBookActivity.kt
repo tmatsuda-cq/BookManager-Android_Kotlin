@@ -54,7 +54,7 @@ class AddBookActivity : AppCompatActivity() {
                             iv_add_book_image.setImageBitmap(image)
                         }
                     } catch (e: Exception) {
-                        Toast.makeText(this, "画像選択処理に失敗しました", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
                     }
                 }
             }
