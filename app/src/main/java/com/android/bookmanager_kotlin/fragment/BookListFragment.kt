@@ -21,8 +21,11 @@ class BookListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Fragmentとlayoutを紐付ける
-        // 必要？super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_book_list, container, false)
+        (activity as? AppCompatActivity)?.supportActionBar?.let {
+            it.setTitle(R.string.app_book_list)
+            it.setDisplayHomeAsUpEnabled(false)
+        }
 
         val bookListRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         val linearLayoutManager = LinearLayoutManager(view.context)
@@ -49,10 +52,6 @@ class BookListFragment : Fragment() {
             }
         )
 
-        (activity as? AppCompatActivity)?.supportActionBar?.let {
-            it.setTitle(R.string.app_book_list)
-            it.setDisplayHomeAsUpEnabled(false)
-        }
 
         // アクションバーのボタンを使えるようにする処理
         setHasOptionsMenu(true)
