@@ -13,15 +13,15 @@ class BookListRecyclerViewAdapter (
     private val bookListData: MutableList<Book>)
     : RecyclerView.Adapter<BookListRecyclerViewAdapter.BookListRecyclerViewHolder>() {
 
-    // りすな格納変数
+    // リスナを格納する変数を定義（インターフェースの型）
     private lateinit var listener: OnItemClickListener
 
-    // クリックりすなインターフェースを定義
+    // クリックイベントリスナのインターフェースを定義
     interface OnItemClickListener {
         fun onItemClick(book: Book)
     }
 
-    // りすな
+    // リスナをセット
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }

@@ -44,6 +44,7 @@ class EditBookFragment : Fragment() {
     }
 
     // onCreate() -> onCreateView() -> onActivityCreated() -> onStart() -> onResume()
+    // onCreateView()で下記処理を実装するとnullポになってしまうため onStart()で実装
     override fun onStart() {
         super.onStart()
 
@@ -52,7 +53,7 @@ class EditBookFragment : Fragment() {
             selectBookImage()
         }
 
-        // onCreateView()で呼ぶとnullポになる
+        // onCreateView()で呼ぶとnullポにな
         et_edit_book_purchase_date.setOnClickListener {
             DatePickerUtils.showDatePicker(requireContext(), et_edit_book_purchase_date)
         }

@@ -37,6 +37,8 @@ class BookListFragment : Fragment() {
 
         // Item要素クリックイベント
         adapter.setOnItemClickListener(
+            // BookListRecyclerViewAdapterで定義した抽象メソッドを実装
+            // 再利用をしないため object式でインターフェースを実装
             object : BookListRecyclerViewAdapter.OnItemClickListener {
                 override fun onItemClick(book: Book) {
                     // TODO: 画像データも渡せるようにする
@@ -52,7 +54,6 @@ class BookListFragment : Fragment() {
             }
         )
 
-
         // アクションバーのボタンを使えるようにする処理
         setHasOptionsMenu(true)
 
@@ -62,7 +63,6 @@ class BookListFragment : Fragment() {
     // TODO: ダミーデータのためAPIよりデータ取得をする際は削除
     private fun createDummyBookList(): MutableList<Book> {
         var bookList: MutableList<Book> = ArrayList()
-        // TODO: 画像データもインスタンスのプロパティに入れたい
         var book = Book("Kotlinスタートブック", 2800, "2020/11/24", null)
 
         // 20件のダミーデータを登録
