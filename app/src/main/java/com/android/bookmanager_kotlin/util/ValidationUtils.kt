@@ -7,7 +7,13 @@ import java.util.regex.Pattern
 
 object ValidationUtils {
 
-    // ログイン
+    /**
+     * @params: email, password
+     * @return: Int?
+     * ログイン情報のバリデーションチェック
+     * ログイン情報が有効の場合: nullを返す
+     *             無効の場合: エラーメッセージを返す
+      */
     fun validationCheckLogin(email: String, password: String) : Int? {
         if (email.isEmpty() || password.isEmpty()) {
             return R.string.error_empty_form
