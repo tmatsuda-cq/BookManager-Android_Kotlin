@@ -8,11 +8,11 @@ import java.util.regex.Pattern
 object ValidationUtils {
 
     /**
-     * @params: email, password
+     * @param: email, password
      * @return: Int?
      * ログイン情報のバリデーションチェック
-     * ログイン情報が有効の場合: nullを返す
-     *             無効の場合: エラーメッセージを返す
+     * ログイン情報が有効: nullを返す
+     *             無効: エラーメッセージを返す
       */
     fun validationCheckLogin(email: String, password: String) : Int? {
         if (email.isEmpty() || password.isEmpty()) {
@@ -23,7 +23,13 @@ object ValidationUtils {
         return null
     }
 
-    // サインアップ
+    /**
+     * @param: email, password, passwordConfirmation
+     * @return: Int?
+     * サインアップ情報のバリデーションチェック
+     * サインアップ情報が有効: nullを返す
+     *                無効: エラーメッセージを返す
+     */
     fun validationCheckSignup(email: String, password: String, passwordConfirmation: String) : Int? {
         if (email.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
             return R.string.error_empty_form
@@ -35,8 +41,13 @@ object ValidationUtils {
         return null
     }
 
-    // 書籍登録
-    // バリデーションメソッド
+    /**
+     * @param: name, price, purchaseDate
+     * @return: Int?
+     * 書籍情報のバリデーションチェック
+     * 書籍情報が有効: nullを返す
+     *         無効: エラーメッセージを返す
+     */
     fun validationCheckBookData(name: String, price: String, purchaseDate: String) : Int? {
         if (name.isEmpty() || price.isEmpty() || purchaseDate.isEmpty()) {
             return R.string.error_empty_form
@@ -52,9 +63,9 @@ object ValidationUtils {
         return !matcher.matches()
     }
 
+    // ^: 行の先頭 {6,}: 直前の文字を6個以上繰り返しと一致
+    // 行の先頭が「.」or 6文字同一の文字列の場合は false を返す
     private fun isInvalidPassword(password: String) : Boolean{
-        // ^: 行の先頭 {6,}: 直前の文字を6個以上繰り返しと一致
-        // 行の先頭が「.」or 6文字同一の文字列の場合は false を返す
         val pattern: Pattern = Pattern.compile("^.{6,}")
         val matcher: Matcher = pattern.matcher(password)
         return !matcher.matches()

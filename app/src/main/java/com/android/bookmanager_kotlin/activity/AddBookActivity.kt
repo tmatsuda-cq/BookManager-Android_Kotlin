@@ -43,7 +43,7 @@ class AddBookActivity : AppCompatActivity() {
             type = "image/*"
         }
 
-        // 現在非推奨: startActivityForResult()
+        // startActivityForResult()は現在非推奨となっている
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
             if (result?.resultCode == Activity.RESULT_OK) {
                 result.data?.let { data: Intent ->
