@@ -8,11 +8,12 @@ import java.util.regex.Pattern
 object ValidationUtils {
 
     /**
-     * @param: email, password
-     * @return: Int?
      * ログイン情報のバリデーションチェック
-     * ログイン情報が有効: nullを返す
-     *             無効: エラーメッセージを返す
+     * ログイン情報が未入力でないかどうか、有効な値かどうかを確認する
+     *
+     * @param email ログインID
+     * @param password ログインパスワード
+     * @return エラーメッセージ or null
       */
     fun validationCheckLogin(email: String, password: String) : Int? {
         if (email.isEmpty() || password.isEmpty()) {
@@ -24,11 +25,13 @@ object ValidationUtils {
     }
 
     /**
-     * @param: email, password, passwordConfirmation
-     * @return: Int?
      * サインアップ情報のバリデーションチェック
-     * サインアップ情報が有効: nullを返す
-     *                無効: エラーメッセージを返す
+     * サインアップ情報が未入力でないかどうか、有効な値かどうか、パスワードが一致しているかどうかを確認する
+     *
+     * @param email アカウントID
+     * @param password アカウントパスワード
+     * @param passwordConfirmation 確認用パスワード
+     * @return エラーメッセージ or null
      */
     fun validationCheckSignup(email: String, password: String, passwordConfirmation: String) : Int? {
         if (email.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
@@ -42,11 +45,13 @@ object ValidationUtils {
     }
 
     /**
-     * @param: name, price, purchaseDate
-     * @return: Int?
-     * 書籍情報のバリデーションチェック
-     * 書籍情報が有効: nullを返す
-     *         無効: エラーメッセージを返す
+     * 書籍情報（登録 / 編集)のバリデーションチェック
+     * 書籍情報が未入力でないかどうか、書籍購入価格が数値で入力されているかどうかを確認する
+     *
+     * @param name 書籍名
+     * @param price 書籍購入価格
+     * @param purchaseDate 購入日
+     * @return エラーメッセージ or null
      */
     fun validationCheckBookData(name: String, price: String, purchaseDate: String) : Int? {
         if (name.isEmpty() || price.isEmpty() || purchaseDate.isEmpty()) {
