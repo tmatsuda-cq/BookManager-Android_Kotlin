@@ -1,18 +1,18 @@
 package com.android.bookmanager_kotlin.fragment
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.activity.LoginActivity
 import kotlinx.android.synthetic.main.fragment_logout.view.*
 
-class LogoutFragment : Fragment() {
+class LogoutFragment : Fragment(), LogoutDialogFragment.DialogListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -23,23 +23,16 @@ class LogoutFragment : Fragment() {
             it.setDisplayHomeAsUpEnabled(false)
         }
 
-        // TODO: API実装時インターフェースでコールバックさせないとスレッドの違いからクラッシュするかも
-        // Builderの引数はrequireContextではなくてactivityで良いのか？？
-
-        val context = requireContext()
-
+        // TODO: setTargetFragmentが非推奨のため改善したい
         view.bt_logout.setOnClickListener {
-            AlertDialog.Builder(activity)
-                .setTitle(R.string.dialog_title)
-                .setMessage(R.string.dialog_msg_logout)
-                .setPositiveButton(R.string.view_ok) { _, _ -> showLoginScreen()}
-                .setNegativeButton(R.string.view_cancel, null)
-                .show()
+          val dialogFragment: LogoutDialogFragment =  LogoutDialogFragment.newInstance()
+          dialogFragment.setTargetFragment(this@LogoutFragment, 0)
+          dialogFragment.show(parentFragmentManager, "LogoutDialogFragment")
         }
         return view
     }
 
-    private fun showLoginScreen() {
+    override fun onPositiveClick(dialog: DialogFragment) {
         val intent = Intent(activity?.application, LoginActivity::class.java)
         startActivity(intent)
         activity?.finish()
