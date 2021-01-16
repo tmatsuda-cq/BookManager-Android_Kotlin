@@ -4,12 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -19,9 +20,9 @@ class LoginActivity : AppCompatActivity() {
         setTitle(R.string.app_login)
 
         // ログインボタンクリックイベント処理
-        bt_login.setOnClickListener {
-            val email = et_email.text.toString()
-            val password = et_password.text.toString()
+        findViewById<Button>(R.id.bt_login).setOnClickListener {
+            val email = findViewById<EditText>(R.id.et_email).text.toString()
+            val password = findViewById<EditText>(R.id.et_password).text.toString()
 
             @StringRes
             val errorMessage = ValidationUtils.validationCheckLogin(email, password)
@@ -36,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 新規登録ボタンクリックイベント
-        bt_signup.setOnClickListener {
+        findViewById<Button>(R.id.bt_signup).setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
             finish()

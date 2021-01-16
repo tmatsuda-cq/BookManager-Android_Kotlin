@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
-import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +40,9 @@ class SignupActivity : AppCompatActivity() {
                 return true
             }
             bt_save -> {
-                val email = et_email.text.toString()
-                val password = et_password.text.toString()
-                val passwordConfirmation = et_password_confirmation.text.toString()
+                val email = findViewById<EditText>(R.id.et_email).text.toString()
+                val password = findViewById<EditText>(R.id.et_password).text.toString()
+                val passwordConfirmation = findViewById<EditText>(R.id.et_password_confirmation).text.toString()
 
                 @StringRes
                 val errorMessage = ValidationUtils.validationCheckSignup(email, password, passwordConfirmation)

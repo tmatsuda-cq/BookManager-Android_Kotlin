@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.activity.LoginActivity
-import kotlinx.android.synthetic.main.fragment_logout.view.*
 
 class LogoutFragment : Fragment(), LogoutDialogFragment.DialogListener {
 
@@ -24,7 +24,7 @@ class LogoutFragment : Fragment(), LogoutDialogFragment.DialogListener {
         }
 
         // TODO: setTargetFragmentが非推奨のため改善したい
-        view.bt_logout.setOnClickListener {
+        view?.findViewById<Button>(R.id.bt_logout)?.setOnClickListener {
           val dialogFragment: LogoutDialogFragment =  LogoutDialogFragment.newInstance()
           dialogFragment.setTargetFragment(this@LogoutFragment, 0)
           dialogFragment.show(parentFragmentManager, "LogoutDialogFragment")

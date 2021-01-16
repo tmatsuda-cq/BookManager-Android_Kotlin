@@ -9,8 +9,6 @@ import com.android.bookmanager_kotlin.fragment.LogoutFragment
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_book_list.*
-
 class BookListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +16,7 @@ class BookListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_book_list)
 
         // ボトムナビバーのクリックイベントリスナをセット
-        bottom_navbar.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        findViewById<BottomNavigationView>(R.id.bottom_navbar).setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         // fragment表示処理を記述
         FragmentUtils.showFragment(BookListFragment(), supportFragmentManager, R.id.fl_activity_book_list)

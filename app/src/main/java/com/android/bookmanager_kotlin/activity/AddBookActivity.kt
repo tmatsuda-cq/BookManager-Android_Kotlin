@@ -1,6 +1,5 @@
 package com.android.bookmanager_kotlin.activity
 
-import android.R.id.*
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -9,16 +8,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
-import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
-import kotlinx.android.synthetic.main.activity_add_book.*
 import java.lang.Exception
 
 class AddBookActivity : AppCompatActivity() {
@@ -28,12 +28,12 @@ class AddBookActivity : AppCompatActivity() {
         setTitle(R.string.app_add_book)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        bt_add_book_image.setOnClickListener {
+        findViewById<Button>(R.id.bt_add_book_image).setOnClickListener {
             selectBookImage()
         }
 
-        et_add_book_purchase_date.setOnClickListener {
-            DatePickerUtils.showDatePicker(this, et_add_book_purchase_date)
+        findViewById<EditText>(R.id.et_add_book_purchase_date).setOnClickListener {
+            DatePickerUtils.showDatePicker(this, findViewById(R.id.et_add_book_purchase_date))
         }
     }
 
@@ -43,7 +43,6 @@ class AddBookActivity : AppCompatActivity() {
             type = "image/*"
         }
 
-        // startActivityForResult()は現在非推奨となっている
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
             if (result?.resultCode == Activity.RESULT_OK) {
                 result.data?.let { data: Intent ->
@@ -51,7 +50,7 @@ class AddBookActivity : AppCompatActivity() {
                         data?.data?.also { uri ->
                             val inputStream = contentResolver?.openInputStream(uri)
                             val image = BitmapFactory.decodeStream(inputStream)
-                            iv_add_book_image.setImageBitmap(image)
+                            findViewById<ImageView>(R.id.iv_add_book_image).setImageBitmap(image)
                         }
                     } catch (e: Exception) {
                         Toast.makeText(this, R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
@@ -70,20 +69,19 @@ class AddBookActivity : AppCompatActivity() {
     // アクションバー戻るボタンクリック処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            home -> {
+            android.R.id.home -> {
                 finish()
                 return true
             }
-            bt_save -> {
-                // TODO: API実装時に書籍データ登録処理実装
-                val name = et_add_book_name.text.toString()
-                val price = et_add_book_price.text.toString()
-                val purchaseDate = et_add_book_purchase_date.text.toString()
+            R.id.bt_save -> {
+                val name = findViewById<EditText>(R.id.et_add_book_name).text.toString()
+                val price = findViewById<EditText>(R.id.et_add_book_price).text.toString()
+                val purchaseDate = findViewById<EditText>(R.id.et_add_book_purchase_date).text.toString()
 
                 @StringRes
                 val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)
 
-                // バリデーションに引っかかっているかをnullかどうかで判断している
+                // バリデーションに引っかかっているかをerrorMessageがnullかどうかで判断
                 if (errorMessage == null) {
                     finish()
                 } else {

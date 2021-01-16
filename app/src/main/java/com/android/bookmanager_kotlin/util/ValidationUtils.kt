@@ -6,6 +6,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 object ValidationUtils {
+    private const val PASSWORD_MINIMUM_LENGTH = 6
 
     /**
      * ログイン情報のバリデーションチェック
@@ -71,7 +72,7 @@ object ValidationUtils {
     // ^: 行の先頭 {6,}: 直前の文字を6個以上繰り返しと一致
     // 行の先頭が「.」or 6文字同一の文字列の場合は false を返す
     private fun isInvalidPassword(password: String) : Boolean{
-        val pattern: Pattern = Pattern.compile("^.{6,}")
+        val pattern: Pattern = Pattern.compile("^.{$PASSWORD_MINIMUM_LENGTH,}")
         val matcher: Matcher = pattern.matcher(password)
         return !matcher.matches()
     }

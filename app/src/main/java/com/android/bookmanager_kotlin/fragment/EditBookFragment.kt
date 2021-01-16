@@ -6,6 +6,9 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -18,7 +21,6 @@ import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
-import kotlinx.android.synthetic.main.fragment_edit_book.*
 import java.lang.Exception
 
 class EditBookFragment : Fragment() {
@@ -35,9 +37,9 @@ class EditBookFragment : Fragment() {
 
         // 書籍一覧から渡されたデータをviewに表示する
         setFragmentResultListener("bookData") { _, bundle ->
-            et_edit_book_name.setText(bundle.getString("bookName"))
-            et_edit_book_price.setText(bundle.getInt("bookPrice").toString())
-            et_edit_book_purchase_date.setText(bundle.getString("bookPurchaseDate"))
+            view.findViewById<EditText>(R.id.et_edit_book_name).setText(bundle.getString("bookName"))
+            view.findViewById<EditText>(R.id.et_edit_book_price).setText(bundle.getInt("bookPrice").toString())
+            view.findViewById<EditText>(R.id.et_edit_book_purchase_date).setText(bundle.getString("bookPurchaseDate"))
         }
 
         return view
@@ -49,13 +51,13 @@ class EditBookFragment : Fragment() {
         super.onStart()
 
         // 画像取得処理
-        bt_edit_book_image.setOnClickListener {
+        view?.findViewById<Button>(R.id.bt_edit_book_image)?.setOnClickListener {
             selectBookImage()
         }
 
-        // onCreateView()で呼ぶとnullポにな
-        et_edit_book_purchase_date.setOnClickListener {
-            DatePickerUtils.showDatePicker(requireContext(), et_edit_book_purchase_date)
+        // onCreateView()で呼ぶとnullポになってしまう
+        view?.findViewById<EditText>(R.id.et_edit_book_purchase_date)?.setOnClickListener {
+            DatePickerUtils.showDatePicker(requireContext(), it.findViewById(R.id.et_edit_book_purchase_date))
         }
     }
 
@@ -72,7 +74,7 @@ class EditBookFragment : Fragment() {
                         data?.data?.also { uri ->
                             val inputStream = activity?.contentResolver?.openInputStream(uri)
                             val image = BitmapFactory.decodeStream(inputStream)
-                            iv_edit_book_image.setImageBitmap(image)
+                            view?.findViewById<ImageView>(R.id.iv_edit_book_image)?.setImageBitmap(image)
                         }
                     } catch (e: Exception) {
                         Toast.makeText(requireContext(), R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
@@ -96,9 +98,9 @@ class EditBookFragment : Fragment() {
             }
             bt_save -> {
                 // TODO: API実装時に書籍データ更新処理挟む
-                val name = et_edit_book_name.text.toString()
-                val price = et_edit_book_price.text.toString()
-                val purchaseDate = et_edit_book_purchase_date.text.toString()
+                val name = view?.findViewById<EditText>(R.id.et_edit_book_name)?.text.toString()
+                val price = view?.findViewById<EditText>(R.id.et_edit_book_price)?.text.toString()
+                val purchaseDate = view?.findViewById<EditText>(R.id.et_edit_book_purchase_date)?.text.toString()
 
                 @StringRes
                 val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)

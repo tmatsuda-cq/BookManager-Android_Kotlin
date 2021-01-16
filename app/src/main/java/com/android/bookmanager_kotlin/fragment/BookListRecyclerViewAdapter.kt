@@ -35,7 +35,7 @@ class BookListRecyclerViewAdapter (
     override fun onBindViewHolder(holder: BookListRecyclerViewHolder, position: Int) {
         val item = bookListData[position]
 
-        // TODO: API画像データも表示させる処理を実装する
+        // TODO: API実装時画像データも表示させる処理を実装する
         val bookName = item.bookName
         val bookPrice = item.bookPrice
         val bookPurchaseDate = item.date
