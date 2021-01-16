@@ -1,6 +1,5 @@
 package com.android.bookmanager_kotlin.fragment
 
-import android.R.id.home
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -17,7 +16,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
-import com.android.bookmanager_kotlin.R.id.bt_save
 import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
@@ -55,9 +53,8 @@ class EditBookFragment : Fragment() {
             selectBookImage()
         }
 
-        // onCreateView()で呼ぶとnullポになってしまう
         view?.findViewById<EditText>(R.id.et_edit_book_purchase_date)?.setOnClickListener {
-            DatePickerUtils.showDatePicker(requireContext(), it.findViewById(R.id.et_edit_book_purchase_date))
+                DatePickerUtils.showDatePicker(requireContext(), it.findViewById(R.id.et_edit_book_purchase_date))
         }
     }
 
@@ -92,11 +89,11 @@ class EditBookFragment : Fragment() {
     // アクションバー戻るボタンクリックでフラグメント切り替え
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            home -> {
+            android.R.id.home -> {
                 FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
                 return true
             }
-            bt_save -> {
+            R.id.bt_save -> {
                 // TODO: API実装時に書籍データ更新処理挟む
                 val name = view?.findViewById<EditText>(R.id.et_edit_book_name)?.text.toString()
                 val price = view?.findViewById<EditText>(R.id.et_edit_book_price)?.text.toString()
