@@ -35,9 +35,9 @@ class EditBookFragment : Fragment() {
 
         // 書籍一覧から渡されたデータをviewに表示する
         setFragmentResultListener("bookData") { _, bundle ->
-            view.findViewById<EditText>(R.id.et_edit_book_name).setText(bundle.getString("bookName"))
-            view.findViewById<EditText>(R.id.et_edit_book_price).setText(bundle.getInt("bookPrice").toString())
-            view.findViewById<EditText>(R.id.et_edit_book_purchase_date).setText(bundle.getString("bookPurchaseDate"))
+            view.findViewById<EditText>(R.id.input_book_name).setText(bundle.getString("bookName"))
+            view.findViewById<EditText>(R.id.input_book_price).setText(bundle.getInt("bookPrice").toString())
+            view.findViewById<EditText>(R.id.input_book_purchase_date).setText(bundle.getString("bookPurchaseDate"))
         }
 
         return view
@@ -49,12 +49,12 @@ class EditBookFragment : Fragment() {
         super.onStart()
 
         // 画像取得処理
-        view?.findViewById<Button>(R.id.bt_edit_book_image)?.setOnClickListener {
+        view?.findViewById<Button>(R.id.edit_book_image_button)?.setOnClickListener {
             selectBookImage()
         }
 
-        view?.findViewById<EditText>(R.id.et_edit_book_purchase_date)?.setOnClickListener {
-                DatePickerUtils.showDatePicker(requireContext(), it.findViewById(R.id.et_edit_book_purchase_date))
+        view?.findViewById<EditText>(R.id.input_book_purchase_date)?.setOnClickListener {
+                DatePickerUtils.showDatePicker(requireContext(), it.findViewById(R.id.input_book_purchase_date))
         }
     }
 
@@ -71,7 +71,7 @@ class EditBookFragment : Fragment() {
                         data?.data?.also { uri ->
                             val inputStream = activity?.contentResolver?.openInputStream(uri)
                             val image = BitmapFactory.decodeStream(inputStream)
-                            view?.findViewById<ImageView>(R.id.iv_edit_book_image)?.setImageBitmap(image)
+                            view?.findViewById<ImageView>(R.id.book_image)?.setImageBitmap(image)
                         }
                     } catch (e: Exception) {
                         Toast.makeText(requireContext(), R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
@@ -90,21 +90,21 @@ class EditBookFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout)
                 return true
             }
             R.id.bt_save -> {
                 // TODO: API実装時に書籍データ更新処理挟む
-                val name = view?.findViewById<EditText>(R.id.et_edit_book_name)?.text.toString()
-                val price = view?.findViewById<EditText>(R.id.et_edit_book_price)?.text.toString()
-                val purchaseDate = view?.findViewById<EditText>(R.id.et_edit_book_purchase_date)?.text.toString()
+                val name = view?.findViewById<EditText>(R.id.input_book_name)?.text.toString()
+                val price = view?.findViewById<EditText>(R.id.input_book_price)?.text.toString()
+                val purchaseDate = view?.findViewById<EditText>(R.id.input_book_purchase_date)?.text.toString()
 
                 @StringRes
                 val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)
 
                 // バリデーションに引っかかっているかをnullかどうかで判断している
                 if (errorMessage == null) {
-                    FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                    FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout)
                 } else {
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
                 }

@@ -20,9 +20,9 @@ class LoginActivity : AppCompatActivity() {
         setTitle(R.string.app_login)
 
         // ログインボタンクリックイベント処理
-        findViewById<Button>(R.id.bt_login).setOnClickListener {
-            val email = findViewById<EditText>(R.id.et_email).text.toString()
-            val password = findViewById<EditText>(R.id.et_password).text.toString()
+        findViewById<Button>(R.id.login_button).setOnClickListener {
+            val email = findViewById<EditText>(R.id.input_email).text.toString()
+            val password = findViewById<EditText>(R.id.input_password).text.toString()
 
             @StringRes
             val errorMessage = ValidationUtils.validationCheckLogin(email, password)
@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 新規登録ボタンクリックイベント
-        findViewById<Button>(R.id.bt_signup).setOnClickListener {
+        findViewById<Button>(R.id.signup_button).setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
             finish()

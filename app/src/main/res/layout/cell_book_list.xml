@@ -6,7 +6,7 @@
     android:layout_height="@dimen/cell_height">
 
     <ImageView
-        android:id="@+id/iv_book_image"
+        android:id="@+id/book_image"
         android:layout_width="@dimen/iv_length_per_side"
         android:layout_height="@dimen/iv_length_per_side"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,20 +17,20 @@
         app:srcCompat="@drawable/ic_launcher"/> <!-- TODO: API実装時削除、ダミー画像データのため -->
 
     <TextView
-        android:id="@+id/tv_book_name"
+        android:id="@+id/book_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/iv_book_image"
+        app:layout_constraintStart_toEndOf="@id/book_image"
         android:layout_marginLeft="@dimen/margin_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.1"/>
 
     <TextView
-        android:id="@+id/tv_book_price"
+        android:id="@+id/book_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/iv_book_image"
+        app:layout_constraintStart_toEndOf="@id/book_image"
         android:layout_marginLeft="@dimen/margin_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,12 +39,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_book_price"
-        app:layout_constraintStart_toEndOf="@id/tv_book_price"
+        app:layout_constraintTop_toTopOf="@id/book_price"
+        app:layout_constraintStart_toEndOf="@id/book_price"
         android:text="@string/tv_yen"/>
 
     <TextView
-        android:id="@+id/tv_book_purchase_date"
+        android:id="@+id/book_purchase_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

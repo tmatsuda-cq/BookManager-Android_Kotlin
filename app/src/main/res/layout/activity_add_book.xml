@@ -10,7 +10,7 @@
     tools:context=".activity.AddBookActivity">
 
     <ImageView
-        android:id="@+id/iv_add_book_image"
+        android:id="@+id/book_image"
         android:layout_width="@dimen/iv_length_per_side"
         android:layout_height="@dimen/iv_length_per_side"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,67 +19,67 @@
         android:layout_marginTop="@dimen/margin_small"/>
 
     <Button
-        android:id="@+id/bt_add_book_image"
+        android:id="@+id/add_book_image_button"
         android:layout_width="@dimen/bt_width_small"
         android:layout_height="@dimen/bt_height"
-        app:layout_constraintStart_toEndOf="@id/iv_add_book_image"
+        app:layout_constraintStart_toEndOf="@id/book_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/bt_add_image"/>
 
     <TextView
-        android:id="@+id/tv_add_book_name"
+        android:id="@+id/book_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/et_add_book_name"
-        app:layout_constraintTop_toBottomOf="@id/iv_add_book_image"
+        app:layout_constraintStart_toStartOf="@id/input_book_name"
+        app:layout_constraintTop_toBottomOf="@id/book_image"
         android:layout_marginTop="@dimen/margin_small"
         android:text="@string/tv_book_name"/>
 
     <EditText
-        android:id="@+id/et_add_book_name"
+        android:id="@+id/input_book_name"
         android:layout_width="@dimen/et_width"
         android:layout_height="@dimen/et_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_book_name"/>
+        app:layout_constraintTop_toBottomOf="@id/book_name"/>
 
     <TextView
-        android:id="@+id/tv_add_book_price"
+        android:id="@+id/book_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintStart_toStartOf="@id/et_add_book_price"
-        app:layout_constraintTop_toBottomOf="@id/et_add_book_name"
+        app:layout_constraintStart_toStartOf="@id/input_book_price"
+        app:layout_constraintTop_toBottomOf="@id/input_book_name"
         android:text="@string/tv_book_price"/>
 
     <EditText
-        android:id="@+id/et_add_book_price"
+        android:id="@+id/input_book_price"
         android:layout_width="@dimen/et_width"
         android:layout_height="@dimen/et_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_book_price"
+        app:layout_constraintTop_toBottomOf="@id/book_price"
         android:inputType="number"/>
 
     <TextView
-        android:id="@+id/tv_add_book_purchase_date"
+        android:id="@+id/book_purchase_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintStart_toStartOf="@id/et_add_book_purchase_date"
-        app:layout_constraintTop_toBottomOf="@id/et_add_book_price"
+        app:layout_constraintStart_toStartOf="@id/input_book_purchase_date"
+        app:layout_constraintTop_toBottomOf="@id/input_book_price"
         android:text="@string/tv_purchase_date"/>
 
     <EditText
-        android:id="@+id/et_add_book_purchase_date"
+        android:id="@+id/input_book_purchase_date"
         android:layout_width="@dimen/et_width"
         android:layout_height="@dimen/et_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_book_purchase_date"
+        app:layout_constraintTop_toBottomOf="@id/book_purchase_date"
         android:focusable="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

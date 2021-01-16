@@ -24,7 +24,7 @@ class LogoutFragment : Fragment(), LogoutDialogFragment.DialogListener {
         }
 
         // TODO: setTargetFragmentが非推奨のため改善したい
-        view?.findViewById<Button>(R.id.bt_logout)?.setOnClickListener {
+        view?.findViewById<Button>(R.id.logout_button)?.setOnClickListener {
           val dialogFragment: LogoutDialogFragment =  LogoutDialogFragment.newInstance()
           dialogFragment.setTargetFragment(this@LogoutFragment, 0)
           dialogFragment.show(parentFragmentManager, "LogoutDialogFragment")

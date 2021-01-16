@@ -28,12 +28,12 @@ class AddBookActivity : AppCompatActivity() {
         setTitle(R.string.app_add_book)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        findViewById<Button>(R.id.bt_add_book_image).setOnClickListener {
+        findViewById<Button>(R.id.add_book_image_button).setOnClickListener {
             selectBookImage()
         }
 
-        findViewById<EditText>(R.id.et_add_book_purchase_date).setOnClickListener {
-            DatePickerUtils.showDatePicker(this, findViewById(R.id.et_add_book_purchase_date))
+        findViewById<EditText>(R.id.input_book_purchase_date).setOnClickListener {
+            DatePickerUtils.showDatePicker(this, findViewById(R.id.input_book_purchase_date))
         }
     }
 
@@ -50,7 +50,7 @@ class AddBookActivity : AppCompatActivity() {
                         data?.data?.also { uri ->
                             val inputStream = contentResolver?.openInputStream(uri)
                             val image = BitmapFactory.decodeStream(inputStream)
-                            findViewById<ImageView>(R.id.iv_add_book_image).setImageBitmap(image)
+                            findViewById<ImageView>(R.id.book_image).setImageBitmap(image)
                         }
                     } catch (e: Exception) {
                         Toast.makeText(this, R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
@@ -74,9 +74,9 @@ class AddBookActivity : AppCompatActivity() {
                 return true
             }
             R.id.bt_save -> {
-                val name = findViewById<EditText>(R.id.et_add_book_name).text.toString()
-                val price = findViewById<EditText>(R.id.et_add_book_price).text.toString()
-                val purchaseDate = findViewById<EditText>(R.id.et_add_book_purchase_date).text.toString()
+                val name = findViewById<EditText>(R.id.input_book_name).text.toString()
+                val price = findViewById<EditText>(R.id.input_book_price).text.toString()
+                val purchaseDate = findViewById<EditText>(R.id.input_book_purchase_date).text.toString()
 
                 @StringRes
                 val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)

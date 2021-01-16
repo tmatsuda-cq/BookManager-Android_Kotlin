@@ -9,7 +9,7 @@
     tools:context=".activity.BookListActivity">
 
     <FrameLayout
-        android:id="@+id/fl_activity_book_list"
+        android:id="@+id/activity_book_list_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"

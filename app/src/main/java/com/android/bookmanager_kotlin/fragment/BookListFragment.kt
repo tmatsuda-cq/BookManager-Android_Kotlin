@@ -27,12 +27,12 @@ class BookListFragment : Fragment() {
         }
 
         val bookListRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-        val linearLayoutManager = LinearLayoutManager(view.context)
+        val linearLayoutManager = LinearLayoutManager(requireActivity())
         val adapter = BookListRecyclerViewAdapter(createDummyBookList())
 
         bookListRecyclerView.layoutManager = linearLayoutManager
         bookListRecyclerView.adapter = adapter
-        bookListRecyclerView.addItemDecoration(DividerItemDecoration(view.context, linearLayoutManager.orientation))
+        bookListRecyclerView.addItemDecoration(DividerItemDecoration(requireActivity(), linearLayoutManager.orientation))
 
         // CellItem要素クリックイベント
         adapter.setOnItemClickListener(
@@ -48,7 +48,7 @@ class BookListFragment : Fragment() {
                         "bookPrice" to book.bookPrice,
                         "bookPurchaseDate" to book.date
                     ))
-                    FragmentUtils.showFragment(EditBookFragment(), parentFragmentManager, R.id.fl_activity_book_list)
+                    FragmentUtils.showFragment(EditBookFragment(), parentFragmentManager, R.id.activity_book_list_layout)
                 }
             }
         )

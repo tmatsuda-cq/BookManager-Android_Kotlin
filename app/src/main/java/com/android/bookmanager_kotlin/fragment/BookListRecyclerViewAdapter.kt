@@ -52,9 +52,9 @@ class BookListRecyclerViewAdapter (
     override fun getItemCount(): Int = bookListData.size
 
     class BookListRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var bookName: TextView = itemView.findViewById(R.id.tv_book_name)
-        var bookPrice: TextView = itemView.findViewById(R.id.tv_book_price)
-        var bookPurchaseDate: TextView = itemView.findViewById(R.id.tv_book_purchase_date)
-        var bookImage: ImageView = itemView.findViewById(R.id.iv_book_image)
+        var bookName: TextView = itemView.findViewById(R.id.book_name)
+        var bookPrice: TextView = itemView.findViewById(R.id.book_price)
+        var bookPurchaseDate: TextView = itemView.findViewById(R.id.book_purchase_date)
+        var bookImage: ImageView = itemView.findViewById(R.id.book_image)
     }
 }

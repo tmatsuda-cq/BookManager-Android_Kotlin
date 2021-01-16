@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/bt_logout"
+        android:id="@+id/logout_button"
         android:layout_width="@dimen/bt_width_large"
         android:layout_height="@dimen/bt_height"
         app:layout_constraintStart_toStartOf="parent"
