@@ -6,8 +6,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
 import java.lang.ClassCastException
 import java.lang.IllegalStateException
@@ -16,7 +14,6 @@ class LogoutDialogFragment : DialogFragment() {
 
     private lateinit var listener: DialogListener
 
-    // TODO: publicでも良いか確認、companion object じゃなくてもいいかも
     companion object {
         fun newInstance() : LogoutDialogFragment {
             return LogoutDialogFragment()

@@ -94,7 +94,6 @@ class EditBookFragment : Fragment() {
                 return true
             }
             R.id.bt_save -> {
-                // TODO: API実装時に書籍データ更新処理挟む
                 val name = view?.findViewById<EditText>(R.id.input_book_name)?.text.toString()
                 val price = view?.findViewById<EditText>(R.id.input_book_price)?.text.toString()
                 val purchaseDate = view?.findViewById<EditText>(R.id.input_book_purchase_date)?.text.toString()
