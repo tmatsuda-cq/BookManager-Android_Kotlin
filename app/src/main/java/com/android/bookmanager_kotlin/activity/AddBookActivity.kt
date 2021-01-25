@@ -19,6 +19,7 @@ import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
+import com.android.bookmanager_kotlin.util.AlertDialogUtils.showAlertDialog
 import java.lang.Exception
 
 class AddBookActivity : AppCompatActivity() {
@@ -53,7 +54,7 @@ class AddBookActivity : AppCompatActivity() {
                             findViewById<ImageView>(R.id.book_image).setImageBitmap(image)
                         }
                     } catch (e: Exception) {
-                        Toast.makeText(this, R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
+                        showAlertDialog(R.string.dialog_title,R.string.error_insert_book_image)
                     }
                 }
             }
@@ -85,7 +86,7 @@ class AddBookActivity : AppCompatActivity() {
                 if (errorMessage == null) {
                     finish()
                 } else {
-                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+                    showAlertDialog(R.string.dialog_title, errorMessage)
                 }
                 return true
             }

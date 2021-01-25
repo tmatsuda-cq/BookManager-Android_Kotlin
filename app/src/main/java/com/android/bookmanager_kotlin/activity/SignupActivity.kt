@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.util.AlertDialogUtils.showAlertDialog
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
 
@@ -49,7 +50,7 @@ class SignupActivity : AppCompatActivity() {
                     startActivity(Intent(this, BookListActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+                    showAlertDialog(R.string.dialog_title, errorMessage)
                 }
                 return true
             }

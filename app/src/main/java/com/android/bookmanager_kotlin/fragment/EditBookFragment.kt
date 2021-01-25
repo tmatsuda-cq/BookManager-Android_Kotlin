@@ -16,6 +16,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import com.android.bookmanager_kotlin.R
+import com.android.bookmanager_kotlin.util.AlertDialogUtils.showAlertDialog
 import com.android.bookmanager_kotlin.util.DatePickerUtils
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.ValidationUtils
@@ -74,7 +75,7 @@ class EditBookFragment : Fragment() {
                             view?.findViewById<ImageView>(R.id.book_image)?.setImageBitmap(image)
                         }
                     } catch (e: Exception) {
-                        Toast.makeText(requireContext(), R.string.error_insert_book_image, Toast.LENGTH_LONG).show()
+                        requireActivity().showAlertDialog(R.string.dialog_title,R.string.error_insert_book_image)
                     }
                 }
             }
@@ -105,7 +106,7 @@ class EditBookFragment : Fragment() {
                 if (errorMessage == null) {
                     FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout)
                 } else {
-                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+                    requireActivity().showAlertDialog(R.string.dialog_title,errorMessage)
                 }
                 return true
             }
