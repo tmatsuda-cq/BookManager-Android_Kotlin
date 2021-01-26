@@ -47,10 +47,8 @@ class BookListActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val fragment =
-            supportFragmentManager.findFragmentById(R.id.activity_book_list_layout)
+        val fragment = supportFragmentManager.findFragmentById(R.id.activity_book_list_layout)
 
-        // 書籍一覧
         if (fragment is BookListFragment || fragment is LogoutFragment) {
             finish()
         }
