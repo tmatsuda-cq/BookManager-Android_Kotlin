@@ -9,6 +9,7 @@ import com.android.bookmanager_kotlin.fragment.LogoutFragment
 import com.android.bookmanager_kotlin.util.FragmentUtils
 import com.android.bookmanager_kotlin.util.KeyboardUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 class BookListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,5 +44,16 @@ class BookListActivity : AppCompatActivity() {
         KeyboardUtils.hideKeyboard(focusView)
 
         return false
+    }
+
+    override fun onBackPressed() {
+        val fragment =
+            supportFragmentManager.findFragmentById(R.id.activity_book_list_layout)
+
+        // 書籍一覧
+        if (fragment is BookListFragment || fragment is LogoutFragment) {
+            finish()
+        }
+        super.onBackPressed()
     }
 }
