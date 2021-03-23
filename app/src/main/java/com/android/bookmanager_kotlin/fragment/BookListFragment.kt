@@ -60,8 +60,8 @@ class BookListFragment : Fragment() {
 
     // TODO: ダミーデータのためAPIよりデータ取得をする際は削除
     private fun createDummyBookList(): MutableList<Book> {
-        var bookList: MutableList<Book> = ArrayList()
-        var book = Book("Kotlinスタートブック", 2800, "2020/11/24", null)
+        val bookList: MutableList<Book> = ArrayList()
+        val book = Book("Kotlinスタートブック", 2800, "2020/11/24", null)
 
         // 20件のダミーデータを登録
         var i = 0
