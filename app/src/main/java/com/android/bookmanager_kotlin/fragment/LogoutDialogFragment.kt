@@ -4,11 +4,9 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.android.bookmanager_kotlin.R
-import com.android.bookmanager_kotlin.activity.LoginActivity
 import java.lang.ClassCastException
 import java.lang.IllegalStateException
 

@@ -1,12 +1,12 @@
 package com.android.bookmanager_kotlin.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.util.AlertDialogUtils.showAlertDialog
 import com.android.bookmanager_kotlin.util.KeyboardUtils
@@ -39,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.signup_button).setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.widget.EditText
-import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.util.AlertDialogUtils.showAlertDialog
@@ -33,7 +32,6 @@ class SignupActivity : AppCompatActivity() {
 
         when (item.itemId) {
             android.R.id.home -> {
-                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
 
                 return true
@@ -47,8 +45,10 @@ class SignupActivity : AppCompatActivity() {
                 val errorMessage = ValidationUtils.validationCheckSignup(email, password, passwordConfirmation)
 
                 if (errorMessage == null) {
-                    startActivity(Intent(this, BookListActivity::class.java))
-                    finish()
+                    val intent = Intent(this, BookListActivity::class.java)
+                    // activityを起動する前に既存タスクを破棄。LoginActivity・SignupActivity 両方が終了される
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                 } else {
                     showAlertDialog(R.string.dialog_title, errorMessage)
                 }
