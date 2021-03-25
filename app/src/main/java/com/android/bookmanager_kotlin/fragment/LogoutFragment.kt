@@ -23,16 +23,14 @@ class LogoutFragment : Fragment(), LogoutDialogFragment.DialogListener {
             it.setDisplayHomeAsUpEnabled(false)
         }
 
-        // TODO: setTargetFragmentが非推奨のため改善したい
         view?.findViewById<Button>(R.id.logout_button)?.setOnClickListener {
-          val dialogFragment: LogoutDialogFragment =  LogoutDialogFragment.newInstance()
-          dialogFragment.setTargetFragment(this@LogoutFragment, 0)
-          dialogFragment.show(parentFragmentManager, "LogoutDialogFragment")
+          LogoutDialogFragment.newInstance().show(childFragmentManager, LogoutDialogFragment.javaClass.simpleName)
         }
         return view
     }
 
     override fun onPositiveClick(dialog: DialogFragment) {
+        // TODO: API実装時、ログアウトAPI叩きつつ画面遷移
         val intent = Intent(activity?.application, LoginActivity::class.java)
         startActivity(intent)
         activity?.finish()
