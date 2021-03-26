@@ -91,7 +91,7 @@ class EditBookFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout)
+                parentFragmentManager.popBackStack()
                 return true
             }
             R.id.bt_save -> {
@@ -104,7 +104,7 @@ class EditBookFragment : Fragment() {
 
                 // バリデーションに引っかかっているかをnullかどうかで判断している
                 if (errorMessage == null) {
-                    FragmentUtils.showFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout)
+                    FragmentUtils.openFragment(BookListFragment(), parentFragmentManager, R.id.activity_book_list_layout, false)
                 } else {
                     requireActivity().showAlertDialog(R.string.dialog_title,errorMessage)
                 }

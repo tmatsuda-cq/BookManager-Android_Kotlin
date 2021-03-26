@@ -6,11 +6,18 @@ import androidx.fragment.app.FragmentManager
 
 object FragmentUtils {
 
-    fun showFragment(fragment: Fragment, fragmentManager: FragmentManager, @IdRes container: Int) {
-        fragmentManager
-            .beginTransaction()
-            .replace(container, fragment)
-            .addToBackStack(null)
-            .commit()
+    fun openFragment(fragment: Fragment, fragmentManager: FragmentManager, @IdRes container: Int, isAddBackStack: Boolean) {
+        if (isAddBackStack) {
+            fragmentManager
+                    .beginTransaction()
+                    .replace(container, fragment)
+                    .addToBackStack(null)
+                    .commit()
+        } else {
+            fragmentManager.popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            fragmentManager.beginTransaction()
+                    .replace(container, fragment)
+                    .commit()
+        }
     }
 }

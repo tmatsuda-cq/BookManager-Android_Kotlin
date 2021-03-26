@@ -48,7 +48,7 @@ class BookListFragment : Fragment() {
                         "bookPrice" to book.bookPrice,
                         "bookPurchaseDate" to book.date
                     ))
-                    FragmentUtils.showFragment(EditBookFragment(), parentFragmentManager, R.id.activity_book_list_layout)
+                    FragmentUtils.openFragment(EditBookFragment(), parentFragmentManager, R.id.activity_book_list_layout, true)
                 }
             }
         )

@@ -3,6 +3,7 @@ package com.android.bookmanager_kotlin.activity
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.android.bookmanager_kotlin.R
 import com.android.bookmanager_kotlin.fragment.BookListFragment
 import com.android.bookmanager_kotlin.fragment.LogoutFragment
@@ -20,18 +21,18 @@ class BookListActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_navbar).setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         // fragment表示処理を記述
-        FragmentUtils.showFragment(BookListFragment(), supportFragmentManager, R.id.activity_book_list_layout)
+        FragmentUtils.openFragment(BookListFragment(), supportFragmentManager, R.id.activity_book_list_layout, false)
     }
 
     // ナビゲーションクリックイベントを記述
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navbar_book_list -> {
-                FragmentUtils.showFragment(BookListFragment(), supportFragmentManager, R.id.activity_book_list_layout)
+                FragmentUtils.openFragment(BookListFragment(), supportFragmentManager, R.id.activity_book_list_layout, false)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navbar_setting -> {
-                FragmentUtils.showFragment(LogoutFragment(), supportFragmentManager, R.id.activity_book_list_layout)
+                FragmentUtils.openFragment(LogoutFragment(), supportFragmentManager, R.id.activity_book_list_layout, false)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -44,14 +45,5 @@ class BookListActivity : AppCompatActivity() {
         KeyboardUtils.hideKeyboard(focusView)
 
         return false
-    }
-
-    override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentById(R.id.activity_book_list_layout)
-
-        if (fragment is BookListFragment || fragment is LogoutFragment) {
-            finish()
-        }
-        super.onBackPressed()
     }
 }

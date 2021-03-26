@@ -101,4 +101,8 @@ class AddBookActivity : AppCompatActivity() {
 
         return false
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
 }
