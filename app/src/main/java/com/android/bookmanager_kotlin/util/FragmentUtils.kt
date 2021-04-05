@@ -14,7 +14,7 @@ object FragmentUtils {
                     .addToBackStack(null)
                     .commit()
         } else {
-            fragmentManager.popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            fragmentManager.popBackStack()
             fragmentManager.beginTransaction()
                     .replace(container, fragment)
                     .commit()
