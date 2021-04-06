@@ -65,8 +65,7 @@ object ValidationUtils {
 
     // invalid: 無効, valid: 有効
     private fun isInvalidEmail(email: String) : Boolean {
-        val matcher: Matcher = Patterns.EMAIL_ADDRESS.matcher(email)
-        return !matcher.matches()
+        return !Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     // ^: 行の先頭 {6,}: 直前の文字を6個以上繰り返しと一致
