@@ -36,8 +36,8 @@ class BookListRecyclerViewAdapter (
         val item = bookListData[position]
 
         // TODO: API実装時画像データも表示させる処理を実装する
-        val bookName = item.bookName
-        val bookPrice = item.bookPrice
+        val bookName = item.name
+        val bookPrice = item.price
         val bookPurchaseDate = item.date
 
         holder.bookName.text = bookName

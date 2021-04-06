@@ -44,8 +44,8 @@ class BookListFragment : Fragment() {
 
                     // データを渡す処理
                     setFragmentResult("bookData", bundleOf(
-                        "bookName" to book.bookName,
-                        "bookPrice" to book.bookPrice,
+                        "bookName" to book.name,
+                        "bookPrice" to book.price,
                         "bookPurchaseDate" to book.date
                     ))
                     FragmentUtils.openFragment(EditBookFragment(), parentFragmentManager, R.id.activity_book_list_layout, true)
