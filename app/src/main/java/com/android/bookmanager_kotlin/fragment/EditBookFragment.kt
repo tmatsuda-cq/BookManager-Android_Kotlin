@@ -89,10 +89,10 @@ class EditBookFragment : Fragment() {
 
     // アクションバー戻るボタンクリックでフラグメント切り替え
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 parentFragmentManager.popBackStack()
-                return true
+                true
             }
             R.id.bt_save -> {
                 val name = view?.findViewById<EditText>(R.id.input_book_name)?.text.toString()
@@ -108,9 +108,9 @@ class EditBookFragment : Fragment() {
                 } else {
                     requireActivity().showAlertDialog(R.string.dialog_title,errorMessage)
                 }
-                return true
+                true
             }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }

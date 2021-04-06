@@ -29,12 +29,10 @@ class SignupActivity : AppCompatActivity() {
 
     // アクションバーボタンクリック処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
-
-                return true
+                true
             }
             R.id.bt_save -> {
                 val email = findViewById<EditText>(R.id.input_email).text.toString()
@@ -52,10 +50,10 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     showAlertDialog(R.string.dialog_title, errorMessage)
                 }
-                return true
+                true
             }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
     // 背景タップでキーボードを非表示
