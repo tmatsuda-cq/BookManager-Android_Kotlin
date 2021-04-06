@@ -81,11 +81,12 @@ class BookListFragment : Fragment() {
 
     // アクションバー追加ボタン押した時の処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.bt_add) {
-            activity?.startActivity(Intent(context, AddBookActivity::class.java))
-            true
-        } else {
-            super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.bt_add -> {
+                activity?.startActivity(Intent(context, AddBookActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
