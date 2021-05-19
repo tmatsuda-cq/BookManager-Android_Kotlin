@@ -40,7 +40,7 @@ class SignupActivity : AppCompatActivity() {
                 val passwordConfirmation = findViewById<EditText>(R.id.input_password_confirmation).text.toString()
 
                 @StringRes
-                val errorMessage = ValidationUtils.validationCheckSignup(email, password, passwordConfirmation)
+                val errorMessage = ValidationUtils.validateCheckSignup(email, password, passwordConfirmation)
 
                 if (errorMessage == null) {
                     val intent = Intent(this, BookListActivity::class.java)

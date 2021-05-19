@@ -100,7 +100,7 @@ class EditBookFragment : Fragment() {
                 val purchaseDate = view?.findViewById<EditText>(R.id.input_book_purchase_date)?.text.toString()
 
                 @StringRes
-                val errorMessage = ValidationUtils.validationCheckBookData(name, price, purchaseDate)
+                val errorMessage = ValidationUtils.validateCheckBookData(name, price, purchaseDate)
 
                 // バリデーションに引っかかっているかをnullかどうかで判断している
                 if (errorMessage == null) {

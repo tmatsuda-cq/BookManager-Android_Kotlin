@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
             val password = findViewById<EditText>(R.id.input_password).text.toString()
 
             @StringRes
-            val errorMessage = ValidationUtils.validationCheckLogin(email, password)
+            val errorMessage = ValidationUtils.validateCheckLogin(email, password)
 
             if (errorMessage == null) {
                 val intent = Intent(this, BookListActivity::class.java)

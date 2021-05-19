@@ -16,7 +16,7 @@ object ValidationUtils {
      * @param password ログインパスワード
      * @return エラーメッセージ or null
       */
-    fun validationCheckLogin(email: String, password: String) : Int? {
+    fun validateCheckLogin(email: String, password: String) : Int? {
         if (email.isEmpty() || password.isEmpty()) {
             return R.string.error_empty_form
         } else if (isInvalidEmail(email) || isInvalidPassword(password)) {
@@ -34,7 +34,7 @@ object ValidationUtils {
      * @param passwordConfirmation 確認用パスワード
      * @return エラーメッセージ or null
      */
-    fun validationCheckSignup(email: String, password: String, passwordConfirmation: String) : Int? {
+    fun validateCheckSignup(email: String, password: String, passwordConfirmation: String) : Int? {
         if (email.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
             return R.string.error_empty_form
         } else if (isInvalidEmail(email) || isInvalidPassword(password)) {
@@ -54,7 +54,7 @@ object ValidationUtils {
      * @param purchaseDate 購入日
      * @return エラーメッセージ or null
      */
-    fun validationCheckBookData(name: String, price: String, purchaseDate: String) : Int? {
+    fun validateCheckBookData(name: String, price: String, purchaseDate: String) : Int? {
         if (name.isEmpty() || price.isEmpty() || purchaseDate.isEmpty()) {
             return R.string.error_empty_form
         } else if (isNumber(price)) {

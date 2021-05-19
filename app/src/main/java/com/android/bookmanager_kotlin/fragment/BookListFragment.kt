@@ -62,6 +62,8 @@ class BookListFragment : Fragment() {
     private fun createDummyBookList(): MutableList<Book> {
         val bookList: MutableList<Book> = ArrayList()
         val book = Book("Kotlinスタートブック", 2800, "2020/11/24", null)
+        val book2= book.copy()
+        book == book2
 
         // 20件のダミーデータを登録
         var i = 0
