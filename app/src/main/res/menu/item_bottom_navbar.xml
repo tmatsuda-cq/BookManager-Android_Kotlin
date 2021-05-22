@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navbar_book_list"
+        android:title="@string/navbar_book_list"/>
+
+    <item
+        android:id="@+id/navbar_setting"
+        android:title="@string/navbar_setting"/>
+
+</menu>
